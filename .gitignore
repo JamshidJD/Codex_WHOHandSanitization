@@ -26,6 +26,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.log
+
 # Generated project data and media
 output/
 received_videos/
