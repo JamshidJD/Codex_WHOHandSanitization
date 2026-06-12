@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Sanitizer</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Smart Sanitizer</p>
+      <h1>Sanitization Operations</h1>
+    </div>
+    <nav class="nav-tabs" aria-label="Main navigation">
+      <a href="#setup">Setup</a>
+      <a href="#reports">Reports</a>
+      <a href="#kpi">KPI</a>
+      <a href="/swagger">Swagger</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="kpi-strip" id="overview">
+      <div class="metric">
+        <span>Total Doctors</span>
+        <strong id="doctorCount">0</strong>
+      </div>
+      <div class="metric">
+        <span>Total Sanitizers</span>
+        <strong id="sanitizerCount">0</strong>
+      </div>
+      <div class="metric">
+        <span>Recent Logs</span>
+        <strong id="logCount">0</strong>
+      </div>
+      <div class="metric">
+        <span>Minimum Duration</span>
+        <strong><span id="minimumDurationMetric">0</span>s</strong>
+      </div>
+    </section>
+
+    <section class="grid two-columns" id="setup">
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Directory</p>
+            <h2>Doctors</h2>
+          </div>
+        </div>
+        <form id="doctorForm" class="form-grid">
+          <label>
+            Doctor Name
+            <input name="doctorName" autocomplete="name" required>
+          </label>
+          <label>
+            RFID Tag
+            <input name="doctorRFIDTag" required>
+          </label>
+          <button type="submit">Add Doctor</button>
+        </form>
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>RFID Tag</th>
+              </tr>
+            </thead>
+            <tbody id="doctorsTable"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Devices</p>
+            <h2>Sanitizers</h2>
+          </div>
+        </div>
+        <form id="sanitizerForm" class="form-grid">
+          <label>
+            MAC
+            <input name="mac" required>
+          </label>
+          <label>
+            Location
+            <input name="location">
+          </label>
+          <button type="submit">Add Sanitizer</button>
+        </form>
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>MAC</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody id="sanitizersTable"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel" id="reports">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Audit Trail</p>
+          <h2>Sanitization Log Report</h2>
+        </div>
+        <button type="button" id="refreshLogs">Refresh</button>
+      </div>
+      <div class="table-shell large">
+        <table>
+          <thead>
+            <tr>
+              <th>Start Time</th>
+              <th>Doctor</th>
+              <th>RFID Tag</th>
+              <th>Sanitizer</th>
+              <th>Location</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody id="logsTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" id="kpi">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Performance</p>
+          <h2>Doctor KPI</h2>
+        </div>
+        <form id="kpiForm" class="inline-form">
+          <label>
+            Minimum Duration
+            <input name="minimumDuration" type="number" min="1" step="1" required>
+          </label>
+          <button type="submit">Save</button>
+        </form>
+      </div>
+      <div class="table-shell large">
+        <table>
+          <thead>
+            <tr>
+              <th>Doctor</th>
+              <th>RFID Tag</th>
+              <th>Total Logs</th>
+              <th>Successful</th>
+              <th>Missed</th>
+              <th>Avg Duration</th>
+              <th>Compliance</th>
+            </tr>
+          </thead>
+          <tbody id="performanceTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

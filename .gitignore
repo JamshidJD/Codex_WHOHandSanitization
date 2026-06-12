@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+*.egg-info/
+
+# Environment and local config
+.env
+.env.*
+!.env.example
+
+# Node / web frontend
+node_modules/
+dist/
+build/
+.next/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Generated project data and media
+output/
+received_videos/
+datasets/raw/
+datasets/processed_landmarks.csv
+
+# Large local model artifacts
+models/
+*.pt
+*.pth
+*.onnx
+*.h5
+*.tflite
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
